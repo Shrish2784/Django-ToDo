@@ -1,0 +1,23 @@
+{% extends 'ToDoApp/base.html' %}
+
+{% block title %}
+  Profile
+{% endblock %}
+
+{% block nav-pills %}
+  <nav class="nav nav-pills nav-fill">
+    <a href="{% url 'ToDoApp:home' %}" class="nav-item nav-link btn-success">Home</a>
+    <a href="{% url 'ToDoApp:edit_profile' %}" class="nav-item nav-link btn-success">Edit</a>
+    <a href="{% url 'ToDoApp:logout' %}" class="nav-item nav-link btn-danger">Logout</a>
+  </nav>
+{% endblock %}
+
+{% block body %}
+  {% if profile %}
+    <div class="jumbotron" >
+      <h1><small>Username: </small>{{ profile.username }}</h1>
+      <h1><small>Name: </small>{{ profile.first_name }} {{ profile.last_name }}</h1>
+      <h1 style="overflow: hidden;" ><small>Email: </small>{{ profile.email }}</h1>
+    </div>
+  {% endif %}
+{% endblock %}

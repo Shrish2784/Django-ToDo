@@ -1,0 +1,8 @@
+{% extends 'ToDoApp/base.html' %}
+
+{% block nav-pills %}
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link btn-success" id="loginbutton" href="{% url 'ToDoApp:login' %}">Login</a>
+    <a class="nav-item nav-link btn-success" id="signupbutton" href="{% url 'ToDoApp:signup' %}">SignUp</a>
+  </nav>
+{% endblock %}

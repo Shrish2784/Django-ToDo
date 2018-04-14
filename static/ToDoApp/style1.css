@@ -1,0 +1,28 @@
+#search {
+  margin: 20px auto;
+}
+#todos {
+  width: 80%;
+  margin: auto;
+}
+#nav a {
+  margin-left: 5px;
+}
+#formdiv {
+  height: auto;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form-group label{
+  display: block;
+  text-transform: capitalize;
+}
+.form-group input {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  outline: none;
+  text-align: center;
+}

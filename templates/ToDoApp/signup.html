@@ -1,0 +1,25 @@
+{% extends 'ToDoApp/base.html' %}
+
+{% block title %}
+  SignUp
+{% endblock %}
+
+{% block nav-pills %}
+  <nav class="nav nav-pills nav-fill">
+    <a href="#" class="nav-item nav-link active">About</a>
+  </nav>
+{% endblock %}
+
+{% block body %}
+  <div id="formdiv">
+    {% if form %}
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}

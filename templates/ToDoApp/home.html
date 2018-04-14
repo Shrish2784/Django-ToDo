@@ -1,0 +1,41 @@
+<!doctype html>
+{% extends 'ToDoApp/base.html' %}
+
+{% block title %}
+  ToDo
+{% endblock %}
+
+{% block nav-pills %}
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-item nav-link active" href="{% url 'ToDoApp:profile' %}">Profile</a>
+    <a class="nav-item nav-link btn-danger" href="{% url 'ToDoApp:logout' %}">Logout</a>
+  </nav>
+{% endblock %}
+
+{% block body %}
+  <div id="search" class="input-group mb-3">
+    <input id="searchinput" type="text" class="form-control" placeholder="Search">
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="submit">Search</button>
+      <button class="btn btn-primary" id="addtodo">Add</button>
+    </div>
+  </div>
+  <br>
+  <div id="todos">
+    {% if todos %}
+      {% for todo in todos %}
+        <div class="card text-center">
+          <div class="card-header">
+            {{ todo.title }}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ todo.title }}</h5>
+            <p class="card-text">{{ todo.description }}.</p>
+            <a href="#" class="btn btn-primary">Delete</a>
+            <a href="#" id="markasdone" class="btn btn-primary">Mark as Done!</a>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endblock %}
