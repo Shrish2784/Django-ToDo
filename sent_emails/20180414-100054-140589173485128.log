@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on localhost:8000
+From: webmaster@localhost
+To: shrishasthana@outlook.com
+Date: Sat, 14 Apr 2018 10:00:54 -0000
+Message-ID: <152370005460.30326.10159904988800852630@shrish-pc>
+
+
+You're receiving this email because you requested a password reset for your user account at localhost:8000.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/reset/MQ/4vc-43376d03395e087dee0b/
+
+Your username, in case you've forgotten: shrish2784
+
+Thanks for using our site!
+
+The localhost:8000 team
+
+
+
+-------------------------------------------------------------------------------

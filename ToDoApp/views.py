@@ -58,7 +58,7 @@ def edit_profile(request):
             context_dict = {
                 'form': form
             }
-            return render(request, 'ToDoApp/edit_profile.hmtl', context=context_dict)
+            return render(request, 'ToDoApp/edit_profile.html', context=context_dict)
     else:
         form = edit_profile_form(instance=request.user)
         context_dict = {
