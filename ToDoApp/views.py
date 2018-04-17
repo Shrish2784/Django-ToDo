@@ -5,15 +5,21 @@ from ToDoApp.forms import (
     signup_form,
     edit_profile_form
 )
-from django.contrib.auth.views import login
 from django.contrib.auth.forms import (
     PasswordChangeForm,
     PasswordResetForm
 )
 from django.contrib.auth.models import User
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import (
+    update_session_auth_hash,
+    login,
+    authenticate
+)
 from django.contrib.auth.decorators import login_required
 
+
+def toTodo(request):
+    return redirect('/todoapp/')
 
 def index(request):
     return render(request, 'ToDoApp/index.html')
@@ -31,7 +37,12 @@ def signup(request):
         form = signup_form(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/home')
+            user = authenticate(username=form.cleaned_data['username'],
+                                password=form.cleaned_data['password1']
+                                )
+            login(request, user)
+            return redirect(settings.LOGIN_REDIRECT_URL)
+
         else:
             context_dict = {
                 'form': form,
