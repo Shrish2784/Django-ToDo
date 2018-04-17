@@ -11,11 +11,13 @@ from django.contrib.auth.forms import (
 )
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
     return render(request, 'ToDoApp/index.html')
 
+@login_required
 def home(request):
     todos = models.ToDo.objects.all()
     context_dict = {
@@ -41,6 +43,7 @@ def signup(request):
         }
         return render(request, 'ToDoApp/signup.html', context=context_dict)
 
+@login_required
 def profile(request):
     user = request.user
     context_dict = {
@@ -48,6 +51,7 @@ def profile(request):
     }
     return render(request, 'ToDoApp/profile.html', context=context_dict)
 
+@login_required
 def edit_profile(request):
     if request.method == 'POST':
         form = edit_profile_form(request.POST, instance=request.user)
@@ -66,6 +70,7 @@ def edit_profile(request):
         }
         return render(request, 'ToDoApp/edit_profile.html', context=context_dict)
 
+@login_required
 def edit_password(request):
     user = request.user
     if request.method == 'POST':
@@ -85,23 +90,3 @@ def edit_password(request):
             'form': form
         }
         return render(request, 'ToDoApp/edit_password.html', context=context_dict)
-
-# def reset_password(request):
-#     user = request.user
-#     if request.method == 'POST':
-#         form = PasswordResetForm()
-#         if form.is_valid():
-#             form.save()
-#             update_session_auth_hash(request, user)
-#             return redirect('/profile')
-#         else:
-#             context_dict = {
-#                 'form': form
-#             }
-#             return render(request, 'ToDoApp/reset_password.html', context=context_dict)
-#     else:
-#         form = PasswordResetForm()
-#         context_dict = {
-#             'form': form
-#         }
-#         return render(request, 'ToDoApp/reset_password.html', context=context_dict)
