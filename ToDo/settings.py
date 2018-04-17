@@ -49,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'ToDo.middleware.LoginRequiredMiddleware',
+    # 'ToDo.middleware.AdminLoginMiddleware'
 ]
 
 ROOT_URLCONF = 'ToDo.urls'
@@ -130,7 +132,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = '/todoapp/home/'
-
+LOGIN_URL = '/todoapp/login/'
+LOGIN_EXEMPT_URLS = (
+    '/todoapp/login/',
+    '/todoapp/signup/',
+    '/admin/',
+    '/todoapp/'
+)
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")

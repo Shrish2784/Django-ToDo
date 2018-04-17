@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from ToDoApp import models
+from django.conf import settings
 from ToDoApp.forms import (
     signup_form,
     edit_profile_form
@@ -17,7 +18,7 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, 'ToDoApp/index.html')
 
-@login_required
+# @login_required(login_url=settings.LOGIN_URL)
 def home(request):
     todos = models.ToDo.objects.all()
     context_dict = {
@@ -43,7 +44,7 @@ def signup(request):
         }
         return render(request, 'ToDoApp/signup.html', context=context_dict)
 
-@login_required
+# @login_required(login_url=settings.LOGIN_URL)
 def profile(request):
     user = request.user
     context_dict = {
@@ -51,7 +52,7 @@ def profile(request):
     }
     return render(request, 'ToDoApp/profile.html', context=context_dict)
 
-@login_required
+# @login_required(login_url=settings.LOGIN_URL)
 def edit_profile(request):
     if request.method == 'POST':
         form = edit_profile_form(request.POST, instance=request.user)
@@ -70,7 +71,7 @@ def edit_profile(request):
         }
         return render(request, 'ToDoApp/edit_profile.html', context=context_dict)
 
-@login_required
+# @login_required(login_url=settings.LOGIN_URL)
 def edit_password(request):
     user = request.user
     if request.method == 'POST':
