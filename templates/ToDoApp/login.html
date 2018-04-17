@@ -15,25 +15,12 @@
     {% if form %}
       <form method="POST">
         {% csrf_token %}
-        <!-- {% for f in form %}
-          <div class="form-group styleform">
-            <label for="{{ f.id_for_label }}">{{ f.html_name }}</label>
-            {{ f }}
-          </div>
-        {% endfor %} -->
-        <!-- <div class="form-group">
-          <label for="usernameinput">Username</label>
-          <input type="text" name='username' autofocus maxlength="254" required class="form-control" id="usernameinput" placeholder="Username">
-        </div>
-        <div class="form-group">
-          <label for="passwordinput">Password</label>
-          <input type="password" name='password' required class="form-control" id="passwordinput" placeholder="Password">
-        </div> -->
         <div class="form-group">
           {{ form }}
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn btn-primary" href="{% url 'password_reset' %}">Reset Pass</a>
       </form>
     {% endif %}
   </div>

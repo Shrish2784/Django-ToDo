@@ -140,6 +140,7 @@ LOGIN_EXEMPT_URLS = (
     '/todoapp/signup/',
     '/admin/login/',
     '/todoapp/',
+    '/todoapp/password_reset/',
     '/'
 )
 
